@@ -1,4 +1,4 @@
 *.bat text eol=crlf
 *.rc  utf16 eol=crlf diff=utf16
 
-*.txt  utf16 eol=crlf diff=utf16
+*.txt diff=utf16
