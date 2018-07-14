@@ -1,0 +1,2 @@
+*.bat text eol=crlf
+*.rc  utf16 eol=crlf diff=utf16
