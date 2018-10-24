@@ -1,0 +1,16 @@
+version: 1.0.{build}
+image: Visual Studio 2017
+
+configuration:
+  - Release
+  - Debug
+
+platform:
+  - Win32
+  - x64
+
+build_script:
+- cmd: >-
+    echo PLATFORM        %PLATFORM%
+
+    echo CONFIGURATION   %CONFIGURATION%
