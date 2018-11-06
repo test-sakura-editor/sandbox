@@ -14,3 +14,8 @@ build_script:
     echo PLATFORM        %PLATFORM%
 
     echo CONFIGURATION   %CONFIGURATION%
+
+    call build-sphinx-doc.bat
+
+artifacts:
+- path: '*.zip'
