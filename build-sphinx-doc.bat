@@ -3,7 +3,7 @@ if exist build          rmdir /s /q build
 
 pip install sphinx  --user
 
-set PATH=%APPDATA%\Python;%PATH%
+set PATH=%APPDATA%\Python\Scripts;%PATH%
 call make.bat htmlhelp
 
 "C:\Program Files (x86)\HTML Help Workshop\hhc.exe" build\htmlhelp\sandboxdoc.hhp
