@@ -25,3 +25,7 @@ build_script:
     if not defined SECURE_VAR1 echo SECURE_VAR1 is not defined
 
     if not defined SECURE_VAR2 echo SECURE_VAR2 is not defined
+    
+    if defined SECURE_VAR1 echo SECURE_VAR1 is defined
+
+    if defined SECURE_VAR2 echo SECURE_VAR2 is defined
