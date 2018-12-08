@@ -1,6 +1,13 @@
 version: 1.0.{build}
 image: Visual Studio 2017
 
+environment:
+  SECURE_VAR1:
+    secure: u13nxV7AxZi6gDlC2qRcFw==
+
+  SECURE_VAR2:
+    secure: u13nxV7AxZi6gDlC2qRcFw==
+
 configuration:
   - Release
   - Debug
@@ -14,3 +21,7 @@ build_script:
     echo PLATFORM        %PLATFORM%
 
     echo CONFIGURATION   %CONFIGURATION%
+    
+    if not defined SECURE_VAR1 echo SECURE_VAR1 is not defined
+
+    if not defined SECURE_VAR2 echo SECURE_VAR2 is not defined
