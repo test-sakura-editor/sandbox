@@ -29,3 +29,5 @@ build_script:
     if defined SECURE_VAR1 echo SECURE_VAR1 is defined
 
     if defined SECURE_VAR2 echo SECURE_VAR2 is defined
+
+    echo APPVEYOR_PULL_REQUEST_HEAD_REPO_NAME %APPVEYOR_PULL_REQUEST_HEAD_REPO_NAME%
