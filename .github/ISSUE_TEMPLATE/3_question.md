@@ -1,6 +1,6 @@
 ---
-name: 質問
-about: 質問
+name: 問い合わせ
+about: 問い合わせ
 
 ---
 
