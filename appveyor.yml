@@ -18,6 +18,8 @@ platform:
 
 build_script:
 - cmd: >-
+    echo test
+
     echo PLATFORM        %PLATFORM%
 
     echo CONFIGURATION   %CONFIGURATION%
