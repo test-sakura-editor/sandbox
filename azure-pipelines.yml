@@ -1,7 +1,8 @@
 trigger:
-- *
+- master
+- feature/*
 pr:
-- *
+- master
 
 jobs:
 - job: Win32_debug
