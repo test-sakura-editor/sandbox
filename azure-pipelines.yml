@@ -16,5 +16,6 @@ jobs:
       Win64:
         BuildPlatform: 'x64'
 
+  steps:
   - script: echo $(BuildPlatform)
     displayName: 'Test'
