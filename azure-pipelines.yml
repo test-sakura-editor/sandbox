@@ -15,9 +15,17 @@ jobs:
     matrix:
       Win32:
         BuildPlatform: 'Win32'
+        Configuration: 'Release'
+      Win32:
+        BuildPlatform: 'Win32'
+        Configuration: 'Debug'
       Win64:
         BuildPlatform: 'x64'
+        Configuration: 'Release'
+      Win64:
+        BuildPlatform: 'x64'
+        Configuration: 'Debug'
 
   steps:
-  - script: echo $(BuildPlatform)
+  - script: echo $(BuildPlatform) $(Configuration)
     displayName: 'Test'
