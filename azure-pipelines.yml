@@ -1,0 +1,21 @@
+trigger:
+- master
+pr:
+- master
+
+jobs:
+- job: windows
+  displayName: 'Windows'
+  pool:
+    vmImage: 'VS2017-Win2016'
+
+  strategy:
+    matrix:
+      Win32:
+        BuildPlatform: 'Win32'
+      Win64:
+        BuildPlatform: 'x64'
+
+  - script: |
+      echo %BuildPlatform%
+    displayName: 'Test'
