@@ -1,3 +1,2 @@
 steps:
 - script: echo $(BuildPlatform)
-displayName: 'Test'
