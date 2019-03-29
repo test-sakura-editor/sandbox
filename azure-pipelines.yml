@@ -9,7 +9,7 @@ jobs:
   displayName: 'Windows Win32 Debug'
   pool:
     vmImage: 'VS2017-Win2016'
-    
+
   variables:
     configuration: debug
     platform: Win32
@@ -21,7 +21,7 @@ jobs:
   displayName: 'Windows Win32 Release'
   pool:
     vmImage: 'VS2017-Win2016'
-    
+
   variables:
     configuration: release
     platform: Win32
@@ -33,7 +33,7 @@ jobs:
   displayName: 'Windows x64 Debug'
   pool:
     vmImage: 'VS2017-Win2016'
-    
+
   variables:
     configuration: debug
     platform: x64
@@ -45,7 +45,7 @@ jobs:
   displayName: 'Windows x64 Release'
   pool:
     vmImage: 'VS2017-Win2016'
-    
+
   variables:
     configuration: release
     platform: x64
