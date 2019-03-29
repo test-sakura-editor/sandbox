@@ -13,16 +13,16 @@ jobs:
   strategy:
     maxParallel: 10
     matrix:
-      Win32:
+      Win32_Release:
         BuildPlatform: 'Win32'
         Configuration: 'Release'
-      Win32:
+      Win32_Debug:
         BuildPlatform: 'Win32'
         Configuration: 'Debug'
-      Win64:
+      Win64_Release:
         BuildPlatform: 'x64'
         Configuration: 'Release'
-      Win64:
+      Win64_Debug:
         BuildPlatform: 'x64'
         Configuration: 'Debug'
 
