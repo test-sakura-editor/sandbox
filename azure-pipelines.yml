@@ -17,5 +17,4 @@ jobs:
         BuildPlatform: 'x64'
 
   steps:
-  - script: echo $(BuildPlatform)
-    displayName: 'Test'
+  - template: azure-pipelines-template.yml
