@@ -29,3 +29,15 @@ jobs:
   steps:
   - script: echo $(BuildPlatform) $(Configuration)
     displayName: 'Test'
+  - script: timeout 5
+    displayName: 'timeout 1'
+  - script: timeout 5
+    displayName: 'timeout 2'
+  - script: timeout 5
+    displayName: 'timeout 3'
+  - script: timeout 5
+    displayName: 'timeout 4'
+  - script: timeout 5
+    displayName: 'timeout 5'
+  - script: timeout 5
+    displayName: 'timeout 6'
