@@ -11,6 +11,7 @@ jobs:
     vmImage: 'VS2017-Win2016'
 
   strategy:
+    maxParallel: 10
     matrix:
       Win32:
         BuildPlatform: 'Win32'
