@@ -27,4 +27,4 @@ jobs:
         Configuration: 'Debug'
 
   steps:
-  - script: echo $(BuildPlatform) $(Configuration)
+  - template: azure-pipelines-template.yml
