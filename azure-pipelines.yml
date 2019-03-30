@@ -1,8 +1,15 @@
 trigger:
-- master
-- feature/*
+  branches:
+    include:
+      - master
+      - develop
+      - feature/*
 pr:
-- master
+  branches:
+    include:
+      - master
+      - develop
+      - feature/*
 
 jobs:
 - job: windows
