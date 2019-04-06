@@ -1,4 +1,5 @@
 steps:
 - script: set
 - script: echo Build.Reason $(BUILD_REASON)
+- script: echo Build.Reason $(Build.Reason)
 - script: echo Build.Reason variables['Build.Reason']
