@@ -1,4 +1,5 @@
 steps:
 - script: echo $(BuildPlatform)
 - script: echo $(Configuration)
-- script: echo $(SECURE_TEST)
+- script: echo $(SECURE_TEST) > a.txt
+- script: type a.txt
