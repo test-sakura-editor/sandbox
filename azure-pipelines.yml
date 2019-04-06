@@ -60,7 +60,7 @@ jobs:
 
   # https://docs.microsoft.com/ja-jp/azure/devops/pipelines/process/conditions?view=azure-devops&viewFallbackFrom=vsts&tabs=yaml
   # https://docs.microsoft.com/ja-jp/azure/devops/pipelines/build/variables?view=azure-devops&tabs=yaml
-  #condition: eq(variables['Build.Reason'], 'Manual')
+  condition: eq(variables['Build.Reason'], 'Manual')
 
   steps:
   - template: azure-pipelines-template2.yml
