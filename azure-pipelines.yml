@@ -64,3 +64,4 @@ jobs:
 
   steps:
   - script: echo Build.Reason $(BUILD_REASON)
+  - script: echo Build.Reason variables['Build.Reason']
