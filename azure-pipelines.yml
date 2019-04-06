@@ -52,3 +52,16 @@ jobs:
 
   steps:
   - template: azure-pipelines-template.yml
+
+jobs:
+- job: BUILD_REASON
+  displayName: 'BUILD_REASON'
+  pool:
+    vmImage: 'VS2017-Win2016'
+
+  # https://docs.microsoft.com/ja-jp/azure/devops/pipelines/process/conditions?view=azure-devops&viewFallbackFrom=vsts&tabs=yaml
+  # https://docs.microsoft.com/ja-jp/azure/devops/pipelines/build/variables?view=azure-devops&tabs=yaml
+  #condition: eq(variables['Build.Reason'], 'Manual')
+
+  steps:
+  - script: echo Build.Reason $(BUILD_REASON)
