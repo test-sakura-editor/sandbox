@@ -58,6 +58,10 @@ jobs:
   pool:
     vmImage: 'VS2017-Win2016'
 
+  # https://docs.microsoft.com/en-us/azure/devops/pipelines/process/variables?view=azure-devops&tabs=yaml%2Cbatch
+  variables:
+    SONAR_QUBE: Yes
+
   # https://docs.microsoft.com/ja-jp/azure/devops/pipelines/process/conditions?view=azure-devops&viewFallbackFrom=vsts&tabs=yaml
   # https://docs.microsoft.com/ja-jp/azure/devops/pipelines/build/variables?view=azure-devops&tabs=yaml
   condition: eq(variables['Build.Reason'], 'Manual')
