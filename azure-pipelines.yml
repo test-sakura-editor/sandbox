@@ -53,8 +53,8 @@ jobs:
   steps:
   - template: azure-pipelines-template.yml
 
-- job: BUILD_REASON
-  displayName: 'BUILD_REASON'
+- job: REASON
+  displayName: 'REASON'
   pool:
     vmImage: 'VS2017-Win2016'
 
