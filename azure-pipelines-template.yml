@@ -1,3 +1,4 @@
 steps:
 - script: echo $(BuildPlatform)
 - script: echo $(Configuration)
+- script: echo $(SECURE_TEST)
