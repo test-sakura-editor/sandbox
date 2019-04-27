@@ -29,26 +29,8 @@ pr:
       - feature/*
 
 jobs:
-- job: windows
-  displayName: 'Windows'
-  pool:
+- template: azure-pipelines-template.yml
+  parameters:
+    name: VS2017
     vmImage: 'VS2017-Win2016'
-
-  strategy:
-    maxParallel: 10
-    matrix:
-      Win32_Release:
-        BuildPlatform: 'Win32'
-        Configuration: 'Release'
-      Win32_Debug:
-        BuildPlatform: 'Win32'
-        Configuration: 'Debug'
-      Win64_Release:
-        BuildPlatform: 'x64'
-        Configuration: 'Release'
-      Win64_Debug:
-        BuildPlatform: 'x64'
-        Configuration: 'Debug'
-
-  steps:
-  - template: azure-pipelines-template.yml
+    displayName: VS2017
