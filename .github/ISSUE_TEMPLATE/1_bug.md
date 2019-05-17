@@ -16,17 +16,20 @@ about: 動作不具合の報告
 <!-- わかっている範囲で記述ください。 -->
 
 ## 問題発生ビルド環境
+<!-- チケット登録後にブラウザでチェックをいれるのか簡単でいいかもしれません。-->
 <!-- 以下のいずれかで括弧のなかに x を入力してください。 -->
-<!-- OK 例: [x] Azure Pipelines -->
-<!-- NG 例: [] Azure Pipelines -->
-<!-- NG 例: [ x] Azure Pipelines -->
-<!-- NG 例: [x ] Azure Pipelines -->
 
 - [ ] 正式リリース版
 - [ ] Azure Pipelines
 - [ ] Appveyor
 - [ ] ローカルビルド
 - [ ] わからない
+
+<!-- OK 例: [x] Azure Pipelines -->
+<!-- NG 例: [] Azure Pipelines -->
+<!-- NG 例: [ x] Azure Pipelines -->
+<!-- NG 例: [x ] Azure Pipelines -->
+
 
 ## 環境情報
 - OS バージョン
