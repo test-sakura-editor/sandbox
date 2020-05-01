@@ -1,7 +1,7 @@
 ---
 name: 機能要望
 about: 追加機能等の要望
-labels: 機能要望
+labels: enhancement
 ---
 
 ## 要望機能
