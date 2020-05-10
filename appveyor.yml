@@ -24,6 +24,7 @@ skip_commits:
     - .editorconfig
     - 'azure-pipelines*.yml'
     - 'ci/azure-pipelines/template*.yml'
+    - '.github/workflows/*.yml'
 
 build_script:
 - cmd: >-
