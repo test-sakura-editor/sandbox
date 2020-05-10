@@ -6,7 +6,7 @@ trigger:
       - feature/*
   paths:
     exclude:
-      - "*.md"
+      - "**/*.md"
       - docs/*
       - .circleci/*
       - .cirrus.yml
@@ -27,6 +27,9 @@ pr:
       - master
       - develop
       - feature/*
+  paths:
+    exclude:
+      - "**/*.md"
 
 jobs:
 - template: azure-pipelines-template.yml
