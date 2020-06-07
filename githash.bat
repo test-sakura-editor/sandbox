@@ -73,12 +73,16 @@ exit /b 0
 		set CI_REPO_NAME=%APPVEYOR_REPO_NAME%
 	) else if defined BUILD_REPOSITORY_NAME (
 		set CI_REPO_NAME=%BUILD_REPOSITORY_NAME%
+	) else if defined GITHUB_REPOSITORY (
+		set CI_REPO_NAME=%GITHUB_REPOSITORY%
 	)
 
 	if defined APPVEYOR_ACCOUNT_NAME (
 		set CI_ACCOUNT_NAME=%APPVEYOR_ACCOUNT_NAME%
 	) else if defined BUILD_DEFINITIONNAME (
 		set CI_ACCOUNT_NAME=%BUILD_DEFINITIONNAME%
+	) else if defined GITHUB_REPOSITORY_OWNER (
+		set CI_ACCOUNT_NAME=%GITHUB_REPOSITORY_OWNER%
 	)
 
 	@rem ----------------------------------------------------------------------------------------------------------
@@ -96,6 +100,10 @@ exit /b 0
 		@rem example BUILD_BUILDID=672
 		set CI_BUILD_NUMBER=%BUILD_BUILDID%
 	)
+	) else if defined GITHUB_RUN_NUMBER (
+		@rem example GITHUB_RUN_NUMBER=4
+		set CI_BUILD_NUMBER=%GITHUB_RUN_NUMBER%
+	)
 
 	if defined APPVEYOR_BUILD_VERSION (
 		@rem APPVEYOR_BUILD_VERSION=1.0.1624
@@ -104,17 +112,40 @@ exit /b 0
 		@rem example BUILD_BUILDNUMBER=20200205.4
 		set CI_BUILD_VERSION=%BUILD_BUILDNUMBER%
 	)
+	) else if defined GITHUB_RUN_ID (
+		@rem example GITHUB_RUN_ID=127246022
+		set CI_BUILD_VERSION=%GITHUB_RUN_ID%
+	)
 
 	if defined APPVEYOR_PULL_REQUEST_NUMBER (
 		set GITHUB_PR_NUMBER=%APPVEYOR_PULL_REQUEST_NUMBER%
 	) else if defined SYSTEM_PULLREQUEST_PULLREQUESTNUMBER (
 		set GITHUB_PR_NUMBER=%SYSTEM_PULLREQUEST_PULLREQUESTNUMBER%
+	) else if "%GITHUB_EVENT_NAME%" == "pull_request" (
+		@rem GITHUB_EVENT_NAME=pull_request
+		@rem GITHUB_REF=refs/pull/4/merge
+
+		setlocal enabledelayedexpansion
+		set TEMP_PR1=!GITHUB_REF!
+		set TEMP_PR2=!TEMP_PR1:refs/pull/=!
+		set TEMP_PR=!TEMP_PR2:/merge=!
+
+		set GITHUB_PR_NUMBER=!TEMP_PR!
+		
+		@rem echo "TEMP_PR1 = !TEMP_PR1!"
+		@rem echo "TEMP_PR2 = !TEMP_PR2!"
+		@rem echo "TEMP_PR  = !TEMP_PR!"
+		@rem echo "GITHUB_REF       = %GITHUB_REF%"
+		@rem echo "GITHUB_PR_NUMBER = !GITHUB_PR_NUMBER!"
+		endlocal && set GITHUB_PR_NUMBER=%GITHUB_PR_NUMBER%
 	)
 
 	if defined APPVEYOR_PULL_REQUEST_HEAD_COMMIT (
 		set GITHUB_PR_HEAD_COMMIT=%APPVEYOR_PULL_REQUEST_HEAD_COMMIT%
 	) else if defined SYSTEM_PULLREQUEST_SOURCECOMMITID (
 		set GITHUB_PR_HEAD_COMMIT=%SYSTEM_PULLREQUEST_SOURCECOMMITID%
+	) else if "%GITHUB_EVENT_NAME%" == "pull_request" (
+		call :getPR_HEAD %GITHUB_PR_NUMBER%
 	)
 
 	if not "%GITHUB_PR_HEAD_COMMIT%" == "" (
@@ -127,6 +158,9 @@ exit /b 0
 		set GITHUB_ON=1
 	)
 	if "%APPVEYOR_REPO_PROVIDER%"=="gitHub" (
+		set GITHUB_ON=1
+	)
+	if "%GITHUB_ACTIONS%"=="true" (
 		set GITHUB_ON=1
 	)
 
@@ -146,6 +180,7 @@ exit /b 0
 :set_ci_build_url
 	call :set_ci_build_url_for_appveyor
 	call :set_ci_build_url_for_azurepipelines
+	call :set_ci_build_url_for_github_actions
 	exit /b 0
 
 :set_ci_build_url_for_appveyor
@@ -163,6 +198,13 @@ exit /b 0
 	if not defined BUILD_BUILDID                  exit /b 0
 	set CI_BUILD_URL=%SYSTEM_TEAMFOUNDATIONSERVERURI%%SYSTEM_TEAMPROJECT%/_build/results?buildId=%BUILD_BUILDID%
 	exit /b 0
+
+:set_ci_build_url_for_github_actions
+	if not defined GITHUB_REPOSITORY_OWNER        exit /b 0
+	if not defined GITHUB_RUN_ID                  exit /b 0
+	set CI_BUILD_URL=https://github.com/%GITHUB_REPOSITORY%/actions/runs/%GITHUB_RUN_ID%
+	exit /b 0
+
 
 :update_output_githash
 	@rem update githash.h if necessary
@@ -330,3 +372,11 @@ exit /b 0
 	echo //
 
 	exit /b 0
+
+:getPR_HEAD
+	set PR_NUMBER=%1
+	set PR_HEAD=refs/pull/%PR_NUMBER%/head
+	
+	for /f "usebackq" %%s in (`"%CMD_GIT%" show -s --format^=%%H %PR_HEAD%`) do (
+		set GITHUB_PR_HEAD_COMMIT=%%s
+	)
