@@ -47,7 +47,11 @@ jobs:
     - name: Add msbuild to PATH
       uses: microsoft/setup-msbuild@v1.0.0
 
-    - name: MSBuild
+    - name: env
+      run: set
+      shell: cmd
+
+    - name: githash
       run: githash.bat
       shell: cmd
 
