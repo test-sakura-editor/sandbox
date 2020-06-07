@@ -51,7 +51,7 @@ jobs:
       run: set
       shell: cmd
 
-    - name: MSBuild
+    - name: githash
       run: githash.bat
       shell: cmd
 
